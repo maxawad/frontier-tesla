@@ -40,7 +40,7 @@ Open http://localhost:3000/frontier-tesla (the site uses the base path `/frontie
 npm run build
 ```
 
-This writes plain static files to `out/`. No API keys or environment variables are needed. To preview the result, serve the parent folder of `out` so the base path matches, for example:
+This writes plain static files to `out/` (a prebuilt copy is also committed in `out/`). No API keys or environment variables are needed. To preview the result, serve the parent folder of `out` so the base path matches, for example:
 
 ```bash
 mkdir -p preview && rm -rf preview/frontier-tesla && cp -r out preview/frontier-tesla
