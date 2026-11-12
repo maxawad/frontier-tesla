@@ -1,36 +1,60 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Frontier Tesla
 
-## Getting Started
+A single-page marketing website for a fictional Tesla rental and subscription service in San Francisco. It shows what a polished, dark and cinematic landing page for a car rental business can look like, with smooth scroll animations.
 
-First, run the development server:
+## What it does
+
+The page walks a visitor through the whole rental pitch:
+
+- Hero section with the main offer and calls to action
+- How it works, in a few simple steps
+- Vehicle showcase for the 2025 Tesla Model 3
+- Pricing: $65 per day on weekdays, $85 per day on weekends, $500 refundable deposit, 2 day minimum
+- Customer reviews
+- Pickup location
+- FAQ and footer with contact links
+
+It is a static front end only. There is no booking, payment, login or backend, and the buttons link to sections on the same page.
+
+## Tech stack
+
+- Next.js 16 (App Router, static export) and React 19
+- TypeScript
+- Tailwind CSS 4
+- Framer Motion for animations
+
+## Run it locally
+
+You need Node.js 20 or newer.
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000/frontier-tesla (the site uses the base path `/frontier-tesla`, set in `next.config.ts`).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Build a static demo
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+```
 
-## Learn More
+This writes plain static files to `out/`. No API keys or environment variables are needed. To preview the result, serve the parent folder of `out` so the base path matches, for example:
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+mkdir -p preview && rm -rf preview/frontier-tesla && cp -r out preview/frontier-tesla
+npx serve preview
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Then open http://localhost:3000/frontier-tesla/.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+To host it at the root of a domain instead, remove the `basePath` line in `next.config.ts` before building.
 
-## Deploy on Vercel
+## Deployment
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The workflow in `.github/workflows/deploy.yml` builds the site and publishes `out/` to GitHub Pages on every push to `main`. The live URL is normally https://maxawad.github.io/frontier-tesla/ once Pages is enabled for the repository.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Status
+
+Working demo of a front-end design. The business, prices, reviews and contact details are sample content, not a real service. Frontier Tesla is not affiliated with Tesla, Inc.
